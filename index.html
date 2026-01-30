@@ -1,237 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seljan Karimli - Backend Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
-            color: #1f2937;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seljan Karimli — Robotics & AI-Oriented Backend Engineer</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f3f4f6; color: #111827; }
+    .prose p { margin-top: 0.9rem; }
+  </style>
 </head>
+
 <body class="antialiased">
 
-    <!-- Header & Hero Section -->
-    <header class="bg-white shadow-sm py-8 md:py-12">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0 md:space-x-8">
-            <div class="text-center md:text-left">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Seljan Karimli</h1>
-                <p class="mt-2 text-xl text-gray-600">Backend Developer | Computer Engineering Student</p>
-            </div>
-            <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-                <a href="https://github.com/SelKarimli" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors duration-300">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.865-.013-1.7-2.782.604-3.375-1.341-3.375-1.341-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.068-.608.068-.608 1.004.07 1.533 1.034 1.533 1.034.892 1.529 2.341 1.085 2.91.83.091-.64.35-1.085.635-1.334-2.22-.251-4.555-1.11-4.555-4.951 0-1.091.39-1.986 1.03-2.685-.103-.255-.447-1.272.098-2.65 0 0 .84-.27 2.75 1.025.798-.222 1.644-.333 2.492-.337.848.004 1.694.115 2.494.337 1.908-1.296 2.747-1.025 2.747-1.025.545 1.379.201 2.396.098 2.65.64.699 1.029 1.594 1.029 2.685 0 3.85-2.339 4.698-4.562 4.945.359.31.678.921.678 1.855 0 1.334-.012 2.417-.012 2.74 0 .268.18.577.688.481C21.139 20.2 24 16.442 24 12.017 24 6.484 19.523 2 14 2h-2z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="sr-only">GitHub Profile</span>
-                </a>
-                <a href="https://www.linkedin.com/in/seljan-karimli-6a0237213" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors duration-300">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38-.2-2.5 1.11-2.5s2.48 1.119 2.48 2.5zM.001 24h4.978V7.538H.001V24zM22.213 7.538h-4.781V10c0 1.58-1.557 2.41-2.95 2.41s-2.95-1.58-2.95-3.46v-.95h-4.78V24h4.781V15.75c0-.83.744-1.37 1.557-1.37s1.557.54 1.557 1.37v2.75c0 1.58 1.557 2.41 2.95 2.41s2.95-1.58 2.95-3.46V7.538z"/>
-                    </svg>
-                    <span class="sr-only">LinkedIn Profile</span>
-                </a>
-            </div>
+  <!-- Header / Hero -->
+  <header class="bg-white shadow-sm py-8 md:py-12">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-center md:text-left">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900">Seljan Karimli</h1>
+        <p class="mt-2 text-xl text-gray-600">
+          Computer Engineering Student · Robotics & AI-Oriented Backend Engineer
+        </p>
+
+        <div class="mt-4 flex flex-wrap items-center justify-center md:justify-start gap-3 text-sm text-gray-600">
+          <span class="inline-flex items-center gap-2">
+            <span class="font-medium">Email:</span>
+            <a class="hover:text-gray-900 underline underline-offset-4" href="mailto:selkakva@gmail.com">selkakva@gmail.com</a>
+          </span>
+          <span class="text-gray-300">•</span>
+          <span class="inline-flex items-center gap-2">
+            <span class="font-medium">Location:</span> Baku, Azerbaijan
+          </span>
+          <span class="text-gray-300">•</span>
+          <span class="inline-flex items-center gap-2">
+            <span class="font-medium">IELTS:</span> 8.0
+          </span>
         </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8 md:py-16 space-y-16">
-
-        <!-- About Me Section -->
-        <section id="about" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-6">About Me</h2>
-            <div class="prose max-w-none text-gray-600">
-                <p>Hello! My name is Seljan Karimli, and I am a passionate and dedicated Computer Engineering student with a focus on backend development. With a strong academic background from Azerbaijan Technical University and a semester abroad at La Sapienza University, I have developed a solid foundation in computer science and artificial intelligence.</p>
-                <p>My technical skills include C#, .NET, Python, SQL, and web technologies like HTML, CSS, and JavaScript. I have practical experience as a Backend Developer Freelancer, working on various web backends, and as a Software Developer at Technocare, where I'm developing a mobile app using .NET and Flutter.</p>
-                <p>In addition to my professional work, I am an enthusiastic Python instructor, teaching data structures and algorithms to students. My time as a research intern at METU-ROMER further honed my skills and passion for technology. I am driven by a desire to solve complex problems and build robust, efficient, and scalable applications.</p>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Education</h2>
-            <div class="space-y-6">
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 text-gray-400">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 11a1 1 0 100-2 1 1 0 000 2z"/>
-                            <path fill-rule="evenodd" d="M12 2c-4.418 0-8 3.582-8 8a8.001 8.001 0 005.122 7.51L12 22l2.878-4.49A8.001 8.001 0 0020 10c0-4.418-3.582-8-8-8zm.458 12.016A6 6 0 0018 10c0-3.309-2.691-6-6-6s-6 2.691-6 6c0 2.227 1.21 4.193 3.06 5.253L12 18.003l1.196-2.029z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-medium text-gray-900">Computer Engineering</h3>
-                        <p class="text-gray-600">Azerbaijan Technical University</p>
-                        <p class="text-sm text-gray-500">September 2022 - Present | GPA: 96.78/100.00</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 text-gray-400">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 11a1 1 0 100-2 1 1 0 000 2z"/>
-                            <path fill-rule="evenodd" d="M12 2c-4.418 0-8 3.582-8 8a8.001 8.001 0 005.122 7.51L12 22l2.878-4.49A8.001 8.001 0 0020 10c0-4.418-3.582-8-8-8zm.458 12.016A6 6 0 0018 10c0-3.309-2.691-6-6-6s-6 2.691-6 6c0 2.227 1.21 4.193 3.06 5.253L12 18.003l1.196-2.029z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-medium text-gray-900">Applied Computer Science and Artificial Intelligence (Erasmus)</h3>
-                        <p class="text-gray-600">La Sapienza University</p>
-                        <p class="text-sm text-gray-500">September 2023 - February 2024</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 text-gray-400">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M12 11a1 1 0 100-2 1 1 0 000 2z"/>
-                            <path fill-rule="evenodd" d="M12 2c-4.418 0-8 3.582-8 8a8.001 8.001 0 005.122 7.51L12 22l2.878-4.49A8.001 8.001 0 0020 10c0-4.418-3.582-8-8-8zm.458 12.016A6 6 0 0018 10c0-3.309-2.691-6-6-6s-6 2.691-6 6c0 2.227 1.21 4.193 3.06 5.253L12 18.003l1.196-2.029z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-medium text-gray-900">High School</h3>
-                        <p class="text-gray-600">Baku European Lyceum</p>
-                        <p class="text-sm text-gray-500">September 2011 - June 2022 | GPA: 4.83/5.00</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Experience</h2>
-            <div class="space-y-6">
-                <!-- Software Developer Technocare -->
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 text-gray-400">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.5 12.75a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h3.75a.75.75 0 00.75-.75V15zm-1.5-6.75a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0V8.25z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-medium text-gray-900">Software Developer | Technocare</h3>
-                        <p class="text-gray-600">Baku, Azerbaijan | June 2025 - Present</p>
-                        <ul class="list-disc list-inside mt-2 text-gray-600 space-y-1">
-                            <li>Developing a mobile app for iOS, Android, and Windows using .NET and Flutter.</li>
-                            <li>The app's authentication is powered by Google People API and email services through SMTP.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- IT intern METU ROMER -->
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 text-gray-400">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.5 12.75a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h3.75a.75.75 0 00.75-.75V15zm-1.5-6.75a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0V8.25z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-medium text-gray-900">Summer Research Intern | METU-ROMER</h3>
-                        <p class="text-gray-600">July 2025 - August 2025</p>
-                        <p class="mt-2 text-gray-600">Worked as a research intern at the Middle East Technical University (METU) - Robotics and Automation Laboratory (ROMER).</p>
-                    </div>
-                </div>
-
-                <!-- Backend Developer Freelancer -->
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 text-gray-400">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.5 12.75a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h3.75a.75.75 0 00.75-.75V15zm-1.5-6.75a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0V8.25z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-medium text-gray-900">Backend Developer Freelancer</h3>
-                        <p class="text-gray-600">Baku, Azerbaijan | February 2025 - Present</p>
-                        <p class="mt-2 text-gray-600">Developed multiple website backends, which are available as private repositories on my GitHub account.</p>
-                    </div>
-                </div>
-
-                <!-- Python Instructor -->
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 text-gray-400">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.5 12.75a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h3.75a.75.75 0 00.75-.75V15zm-1.5-6.75a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0V8.25z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-medium text-gray-900">Python Instructor</h3>
-                        <p class="text-gray-600">Baku, Azerbaijan | September 2023 - Present</p>
-                        <p class="mt-2 text-gray-600">Lab tutor for students, teaching data structures and algorithms using Python.</p>
-                    </div>
-                </div>
-
-                <!-- Senior ICT-Master Baku European Lyceum -->
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 text-gray-400">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.5 12.75a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h3.75a.75.75 0 00.75-.75V15zm-1.5-6.75a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0V8.25z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-medium text-gray-900">Senior ICT-Master | Baku European Lyceum</h3>
-                        <p class="text-gray-600">Baku, Azerbaijan | 2017 - 2022</p>
-                        <ul class="list-disc list-inside mt-2 text-gray-600 space-y-1">
-                            <li>Taught students C++/C languages and competitive programming.</li>
-                            <li>Joined computer science and bioinformatics seminars.</li>
-                            <li>Participated in STEM Humanoid robot races, finding a solution to make robots walk twice as fast.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Projects</h2>
-            <div class="space-y-6">
-                <!-- Technocare mobile app -->
-                <div class="border-b pb-6 last:border-b-0 last:pb-0">
-                    <h3 class="text-xl font-medium text-gray-900">Technocare Mobile App</h3>
-                    <p class="text-sm text-gray-500">May 2025 - Now</p>
-                    <p class="mt-2 text-gray-600">An iOS/Android/Windows app for Technocare MMC. The project uses .NET, Flutter, MongoDB, HTML, CSS, and JS.</p>
-                </div>
-                <!-- Solinom Hotel MVC | Code Academy Final Project -->
-                <div class="border-b pb-6 last:border-b-0 last:pb-0">
-                    <h3 class="text-xl font-medium text-gray-900">Solinom Hotel MVC | Code Academy Final Project</h3>
-                    <p class="text-sm text-gray-500">March 2025 - May 2025</p>
-                    <p class="mt-2 text-gray-600">A hotel reservation and restaurant service system. Developed with C#, SQL, JWT, SMTP, RESTful API, Repository Pattern with EF Core, HTML, and CSS. It includes a Google People API for login/registration.</p>
-                </div>
-                <!-- Smart Home System | Barama, Azercell -->
-                <div class="border-b pb-6 last:border-b-0 last:pb-0">
-                    <h3 class="text-xl font-medium text-gray-900">Smart Home System | Barama, Azercell</h3>
-                    <p class="text-sm text-gray-500">June 2018 - August 2018</p>
-                    <p class="mt-2 text-gray-600">A smart home system using Python and Arduino for devices, with an accompanying website built with HTML and CSS.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
-            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Skills</h2>
-            <div class="flex flex-wrap gap-3">
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">C#/.NET</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">Python</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">C/C++</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">SQL</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">API/MVC</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">HTML/CSS/JS</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">JSON</span>
-                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full">MS Office</span>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-6 mt-16">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Seljan Karimli. All Rights Reserved.</p>
+        <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-2">
+          <a href="#projects" class="px-4 py-2 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition">Projects</a>
+          <a href="#experience" class="px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm font-medium hover:border-gray-300 transition">Experience</a>
+          <a href="#hackathons" class="px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm font-medium hover:border-gray-300 transition">Hackathons</a>
         </div>
-    </footer>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <!-- GitHub -->
+        <a href="https://github.com/SelKarimli" target="_blank" rel="noreferrer"
+           class="text-gray-600 hover:text-gray-900 transition-colors duration-300"
+           aria-label="GitHub Profile">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.865-.013-1.7-2.782.604-3.375-1.341-3.375-1.341-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.068-.608.068-.608 1.004.07 1.533 1.034 1.533 1.034.892 1.529 2.341 1.085 2.91.83.091-.64.35-1.085.635-1.334-2.22-.251-4.555-1.11-4.555-4.951 0-1.091.39-1.986 1.03-2.685-.103-.255-.447-1.272.098-2.65 0 0 .84-.27 2.75 1.025.798-.222 1.644-.333 2.492-.337.848.004 1.694.115 2.494.337 1.908-1.296 2.747-1.025 2.747-1.025.545 1.379.201 2.396.098 2.65.64.699 1.029 1.594 1.029 2.685 0 3.85-2.339 4.698-4.562 4.945.359.31.678.921.678 1.855 0 1.334-.012 2.417-.012 2.74 0 .268.18.577.688.481C21.139 20.2 24 16.442 24 12.017 24 6.484 19.523 2 14 2h-2z"
+                  clip-rule="evenodd" />
+          </svg>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/seljankarimli" target="_blank" rel="noreferrer"
+           class="text-gray-600 hover:text-gray-900 transition-colors duration-300"
+           aria-label="LinkedIn Profile">
+          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5S.02 4.881.02 3.5C.02 2.12 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.001 24h4.978V7.538H.001V24zM22.213 7.538h-4.781V10c0 1.58-1.557 2.41-2.95 2.41s-2.95-1.58-2.95-3.46v-.95h-4.78V24h4.781V15.75c0-.83.744-1.37 1.557-1.37s1.557.54 1.557 1.37v2.75c0 1.58 1.557 2.41 2.95 2.41s2.95-1.58 2.95-3.46V7.538z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container mx-auto px-4 py-8 md:py-14 space-y-12">
+
+    <!-- About -->
+    <section id="about" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">About</h2>
+      <div class="prose max-w-none text-gray-600">
+        <p>
+          I’m a Computer Engineering student focused on building reliable backend systems and research-oriented
+          robotics/AI pipelines. My work spans production development (Flutter + .NET 8 + MongoDB) and robotics
+          research (ROS 2 perception, depth sensors, 3D reconstruction).
+        </p>
+        <p>
+          I’m especially interested in the intersection of <span class="font-medium text-gray-700">robotics perception</span>,
+          <span class="font-medium text-gray-700">ML pipelines</span>, and <span class="font-medium text-gray-700">scalable software</span> —
+          where experiments can be reproduced, measured, and deployed.
+        </p>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Education</h2>
+
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="mt-1 text-gray-400">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">🎓</span>
+          </div>
+          <div class="w-full">
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+              <h3 class="text-xl font-medium text-gray-900">Azerbaijan Technical University</h3>
+              <p class="text-sm text-gray-500">2022 – 2026</p>
+            </div>
+            <p class="text-gray-600">Computer Engineering · <span class="font-medium">GPA: 93/100</span></p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="mt-1 text-gray-400">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">🌍</span>
+          </div>
+          <div class="w-full">
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+              <h3 class="text-xl font-medium text-gray-900">La Sapienza University of Rome</h3>
+              <p class="text-sm text-gray-500">2023 – 2024</p>
+            </div>
+            <p class="text-gray-600">Applied Computer Science & Artificial Intelligence (Erasmus)</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4">
+          <div class="mt-1 text-gray-400">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100">🏫</span>
+          </div>
+          <div class="w-full">
+            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+              <h3 class="text-xl font-medium text-gray-900">Baku European Lyceum</h3>
+              <p class="text-sm text-gray-500">2011 – 2022</p>
+            </div>
+            <p class="text-gray-600">High School · <span class="font-medium">GPA: 4.83/5.00</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
+        <h2 class="text-3xl font-semibold text-gray-800">Experience</h2>
+        <p class="text-sm text-gray-500">A blend of production engineering and robotics research.</p>
+      </div>
+
+      <div class="space-y-8">
+        <!-- Technocare -->
+        <div class="border-b border-gray-100 pb-8 last:border-b-0 last:pb-0">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+            <h3 class="text-xl font-medium text-gray-900">Technocare LLC — Software Developer</h3>
+            <p class="text-sm text-gray-500">May 2025 – Present</p>
+          </div>
+          <ul class="list-disc list-inside mt-3 text-gray-600 space-y-2">
+            <li>Designed and deployed a production-scale medical e-commerce and automation platform.</li>
+            <li>Developed cross-platform Flutter applications and a C#/.NET 8 REST backend.</li>
+            <li>Architected MongoDB schemas, JWT-based authentication, admin dashboards, and CI workflows.</li>
+          </ul>
+        </div>
+
+        <!-- METU ROMER -->
+        <div class="border-b border-gray-100 pb-8 last:border-b-0 last:pb-0">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+            <h3 class="text-xl font-medium text-gray-900">METU ROMER — Summer Research Intern</h3>
+            <p class="text-sm text-gray-500">Jul 2025 – Aug 2025</p>
+          </div>
+          <ul class="list-disc list-inside mt-3 text-gray-600 space-y-2">
+            <li>Robotics and AI research within the BEKO project for domestic object recognition.</li>
+            <li>Built ROS 2 pipelines integrating Intel RealSense D455 with Franka RobotArm.</li>
+            <li>Implemented Python-based 3D reconstruction, camera calibration, and sensor fusion.</li>
+            <li>Worked with Vision–Language–Action and LLM-based robotic reasoning models.</li>
+          </ul>
+        </div>
+
+        <!-- Python Instructor -->
+        <div class="border-b border-gray-100 pb-8 last:border-b-0 last:pb-0">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+            <h3 class="text-xl font-medium text-gray-900">Python Instructor — Lab Tutor</h3>
+            <p class="text-sm text-gray-500">2023 – Present</p>
+          </div>
+          <ul class="list-disc list-inside mt-3 text-gray-600 space-y-2">
+            <li>Teaching Python, data structures, algorithms, and ML fundamentals to students.</li>
+          </ul>
+        </div>
+
+        <!-- Extra good points not in CV (kept) -->
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-100">
+            <div class="flex items-baseline justify-between gap-2">
+              <h4 class="text-lg font-semibold text-gray-900">Backend Developer — Freelance</h4>
+              <span class="text-xs text-gray-500">Feb 2025 – Present</span>
+            </div>
+            <p class="mt-2 text-gray-600 text-sm">
+              Built multiple web backends for clients (private repositories). Focus areas: REST APIs, auth flows, and database design.
+            </p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-100">
+            <div class="flex items-baseline justify-between gap-2">
+              <h4 class="text-lg font-semibold text-gray-900">Senior ICT-Master — Baku European Lyceum</h4>
+              <span class="text-xs text-gray-500">2017 – 2022</span>
+            </div>
+            <ul class="mt-2 text-gray-600 text-sm list-disc list-inside space-y-1">
+              <li>Taught C/C++ fundamentals and competitive programming.</li>
+              <li>Participated in STEM humanoid robot races and performance optimization experiments.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
+        <h2 class="text-3xl font-semibold text-gray-800">Selected Projects (GitHub)</h2>
+        <a href="https://github.com/SelKarimli" target="_blank" rel="noreferrer"
+           class="text-sm font-medium text-gray-700 hover:text-gray-900 underline underline-offset-4">
+          View GitHub →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="rounded-xl border border-gray-100 p-6 hover:shadow-md transition bg-white">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="text-xl font-semibold text-gray-900">Technocare Platform</h3>
+            <span class="text-xs text-gray-500">Published</span>
+          </div>
+          <p class="mt-2 text-gray-600">
+            End-to-end engineering services and e-commerce system with Flutter clients (Android/Web/Windows) and a .NET 8 REST backend.
+          </p>
+          <ul class="mt-3 text-gray-600 text-sm list-disc list-inside space-y-1">
+            <li>MongoDB-backed order, cart, notification, and application pipelines</li>
+            <li>JWT authentication + admin dashboard tooling</li>
+          </ul>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">Flutter</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">.NET 8</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">MongoDB</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">JWT</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 p-6 hover:shadow-md transition bg-white">
+          <h3 class="text-xl font-semibold text-gray-900">Family Face Recognition</h3>
+          <p class="mt-2 text-gray-600">
+            Python-based ML system for controlled face recognition tasks with dataset management, evaluation, and inference pipelines.
+          </p>
+          <ul class="mt-3 text-gray-600 text-sm list-disc list-inside space-y-1">
+            <li>Classical CV + deep learning workflows</li>
+            <li>Modular pipeline structure for experimentation</li>
+          </ul>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">Python</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">Computer Vision</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">ML Pipelines</span>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 p-6 hover:shadow-md transition bg-white md:col-span-2">
+          <h3 class="text-xl font-semibold text-gray-900">Robotics & Perception Pipelines</h3>
+          <p class="mt-2 text-gray-600">
+            ROS 2-based object recognition and spatial understanding experiments for robotics perception.
+          </p>
+          <ul class="mt-3 text-gray-600 text-sm list-disc list-inside space-y-1">
+            <li>RealSense depth processing, MeshLab mesh refinement, IsaacSim simulation</li>
+            <li>Research-oriented codebase designed for fast iteration and benchmarking</li>
+          </ul>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">ROS 2</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">RealSense D455</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">3D Reconstruction</span>
+            <span class="text-xs px-3 py-1 rounded-full bg-gray-100 text-gray-700">IsaacSim</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra good point not in CV (kept) -->
+      <div class="mt-8 rounded-xl bg-gray-50 border border-gray-100 p-6">
+        <h4 class="text-lg font-semibold text-gray-900">Additional Project (early)</h4>
+        <div class="mt-2 flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+          <p class="text-gray-700 font-medium">Smart Home System — Barama (Azercell)</p>
+          <p class="text-sm text-gray-500">Jun 2018 – Aug 2018</p>
+        </div>
+        <p class="mt-2 text-gray-600 text-sm">
+          Built a smart home prototype using Python and Arduino devices, with a simple web interface (HTML/CSS).
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Skills</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="rounded-xl bg-gray-50 border border-gray-100 p-5">
+          <h3 class="font-semibold text-gray-900">Programming</h3>
+          <p class="mt-2 text-gray-600 text-sm">Python, C#, C++, Dart, SQL</p>
+        </div>
+
+        <div class="rounded-xl bg-gray-50 border border-gray-100 p-5">
+          <h3 class="font-semibold text-gray-900">Frameworks</h3>
+          <p class="mt-2 text-gray-600 text-sm">.NET 8, Flutter, ROS 2, PyTorch, MongoDB</p>
+        </div>
+
+        <div class="rounded-xl bg-gray-50 border border-gray-100 p-5">
+          <h3 class="font-semibold text-gray-900">Research Areas</h3>
+          <p class="mt-2 text-gray-600 text-sm">Robotics, ML, Computer Vision, NLP, LLMs</p>
+        </div>
+      </div>
+
+      <div class="mt-6 text-sm text-gray-500">
+        Languages: English (IELTS 8.0), Azerbaijani (Native), Turkish (Native), Russian (Intermediate), French (Beginner), Italian (Beginner)
+      </div>
+    </section>
+
+    <!-- Awards & Activities -->
+    <section id="awards" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Awards & Activities</h2>
+
+      <div class="space-y-4">
+        <div class="rounded-xl border border-gray-100 p-5">
+          <div class="flex items-baseline justify-between gap-3">
+            <p class="font-semibold text-gray-900">Heydar Aliyev Presidential Scholarship</p>
+            <p class="text-sm text-gray-500">2023</p>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 p-5">
+          <div class="flex items-baseline justify-between gap-3">
+            <p class="font-semibold text-gray-900">AFS STEM Academy Alumni — Egypt</p>
+            <p class="text-sm text-gray-500">2022</p>
+          </div>
+          <p class="mt-2 text-gray-600 text-sm">
+            Focused on STEM, sustainability, design thinking, and social innovation; completed a capstone project and presentation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hackathons -->
+    <section id="hackathons" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Hackathons & Competitions</h2>
+
+      <div class="space-y-4">
+        <div class="rounded-xl border border-gray-100 p-5">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+            <p class="font-semibold text-gray-900">Bitget Hackathon — 3rd Place ($500 Award)</p>
+            <p class="text-sm text-gray-500">May 2025</p>
+          </div>
+          <p class="mt-2 text-gray-600 text-sm">
+            Developed a blockchain-oriented investment platform (CopyStake), focusing on applied AI and fintech system design.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 p-5">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+            <p class="font-semibold text-gray-900">GDG Baku Vibe Hackathon — 1st Place</p>
+            <p class="text-sm text-gray-500">June 2025</p>
+          </div>
+          <p class="mt-2 text-gray-600 text-sm">
+            Built an AI-powered app for personalized daily styling; applied recommendation systems and user-centric ML pipelines.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 p-5">
+          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
+            <p class="font-semibold text-gray-900">SabahLab Hackathon — 1st Place</p>
+            <p class="text-sm text-gray-500">September 2025</p>
+          </div>
+          <p class="mt-2 text-gray-600 text-sm">
+            Designed a fintech platform for investing in intellectual property, emphasizing scalable backend architecture and AI-assisted analytics.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Communities -->
+    <section id="communities" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Professional Communities</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="rounded-xl border border-gray-100 p-5">
+          <p class="font-semibold text-gray-900">Google Developer Group (GDG) Baku — Community Member</p>
+          <ul class="mt-2 text-gray-600 text-sm list-disc list-inside space-y-1">
+            <li>Active participant in developer events, hackathons, and AI-focused technical sessions.</li>
+            <li>Helped organize DevFest 2025 and a MicroSaaS hackathon; supported GitHub and Discord communities.</li>
+          </ul>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 p-5">
+          <p class="font-semibold text-gray-900">Women Techmakers (WTM) — Community Member</p>
+          <ul class="mt-2 text-gray-600 text-sm list-disc list-inside space-y-1">
+            <li>Member of Google’s global initiative supporting diversity and leadership in technology.</li>
+            <li>Helped organize International Women’s Day (IWD) 2026.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section id="recommendations" class="bg-white rounded-xl shadow-lg p-6 md:p-10">
+      <h2 class="text-3xl font-semibold text-gray-800 mb-6">Recommendations</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <a class="rounded-xl border border-gray-100 p-5 hover:shadow-md transition bg-white"
+           href="https://www.linkedin.com/in/avalizada/" target="_blank" rel="noreferrer">
+          <p class="font-semibold text-gray-900">Alakbar Valizada</p>
+          <p class="mt-1 text-gray-600 text-sm">Academic Advisor & Faculty (Azerbaijan Technical University)</p>
+        </a>
+
+        <a class="rounded-xl border border-gray-100 p-5 hover:shadow-md transition bg-white"
+           href="https://www.linkedin.com/in/tural-hamzayev-5537bb390/" target="_blank" rel="noreferrer">
+          <p class="font-semibold text-gray-900">Tural Hamzayev</p>
+          <p class="mt-1 text-gray-600 text-sm">Professional Supervisor (Technocare LLC)</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-8 mt-12">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-sm">&copy; 2026 Seljan Karimli. All rights reserved.</p>
+      <p class="mt-2 text-xs text-gray-400">
+        Built with HTML + TailwindCSS · Content aligned with the academic CV.
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
