@@ -3,666 +3,891 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seljan Karimli — Robotics & AI-Oriented Backend Engineer</title>
+  <title>Seljan Karimli — Galaxy Portfolio</title>
 
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg0:#050816;
-      --bg1:#070b1f;
-      --card: rgba(255,255,255,0.06);
-      --card2: rgba(255,255,255,0.04);
-      --stroke: rgba(255,255,255,0.12);
-      --muted: rgba(255,255,255,0.72);
-      --muted2: rgba(255,255,255,0.58);
-      --white: rgba(255,255,255,0.92);
-      --glow1: #7c3aed; /* violet */
-      --glow2: #22d3ee; /* cyan */
-      --glow3: #fb7185; /* pink */
+      --ink: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+      --stroke: rgba(255,255,255,.22);
+      --stroke2: rgba(255,255,255,.14);
+      --glass: rgba(255,255,255,.10);
+      --glass2: rgba(255,255,255,.06);
+      --glow: rgba(179,125,255,.55);
+      --cyan: rgba(74,222,255,.65);
+      --pink: rgba(251,113,133,.60);
+      --violet: rgba(124,58,237,.75);
+      --bg0:#06071a;
+      --bg1:#0a0b24;
     }
 
-    html { scroll-behavior:smooth; }
+    html{ scroll-behavior:smooth; }
     body{
-      font-family:'Inter',sans-serif;
-      background: radial-gradient(1200px 700px at 20% 10%, rgba(124,58,237,0.22), transparent 55%),
-                  radial-gradient(900px 600px at 80% 15%, rgba(34,211,238,0.18), transparent 55%),
-                  radial-gradient(900px 600px at 60% 90%, rgba(251,113,133,0.14), transparent 55%),
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 20% 10%, rgba(124,58,237,.25), transparent 55%),
+                  radial-gradient(900px 600px at 80% 15%, rgba(34,211,238,.18), transparent 55%),
+                  radial-gradient(900px 600px at 60% 90%, rgba(251,113,133,.14), transparent 55%),
                   linear-gradient(180deg, var(--bg0), var(--bg1));
-      color: var(--white);
+      color: var(--ink);
       overflow-x:hidden;
     }
 
-    /* Subtle starfield */
+    /* Fullscreen “scene” sections */
+    .scene{
+      min-height: 100vh;
+      position: relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 96px 16px 72px;
+      isolation:isolate;
+    }
+
+    /* Snap like the template */
+    .snap{
+      scroll-snap-type: y mandatory;
+      height: 100vh;
+      overflow-y:auto;
+      overflow-x:hidden;
+    }
+    .scene{ scroll-snap-align: start; }
+
+    /* Star layers */
     .stars, .stars2{
-      position:fixed; inset:0;
+      position:absolute; inset:-40px;
       background-repeat:repeat;
       pointer-events:none;
-      z-index:-2;
-      opacity:0.55;
+      z-index:-3;
+      opacity:.55;
     }
     .stars{
       background-image:
-        radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,.55), transparent 2px),
+        radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,.65), transparent 2px),
         radial-gradient(1px 1px at 110px 140px, rgba(255,255,255,.35), transparent 2px),
-        radial-gradient(1px 1px at 220px 80px, rgba(255,255,255,.45), transparent 2px),
+        radial-gradient(1px 1px at 220px 80px, rgba(255,255,255,.50), transparent 2px),
         radial-gradient(1px 1px at 320px 180px, rgba(255,255,255,.25), transparent 2px),
-        radial-gradient(1px 1px at 420px 60px, rgba(255,255,255,.35), transparent 2px);
+        radial-gradient(1px 1px at 420px 60px, rgba(255,255,255,.40), transparent 2px);
       background-size: 520px 260px;
-      filter: blur(0.1px);
+      filter: blur(.2px);
     }
     .stars2{
       background-image:
-        radial-gradient(1px 1px at 40px 70px, rgba(34,211,238,.30), transparent 2px),
-        radial-gradient(1px 1px at 160px 40px, rgba(124,58,237,.30), transparent 2px),
-        radial-gradient(1px 1px at 260px 190px, rgba(251,113,133,.25), transparent 2px);
+        radial-gradient(1px 1px at 40px 70px, rgba(34,211,238,.28), transparent 2px),
+        radial-gradient(1px 1px at 160px 40px, rgba(124,58,237,.28), transparent 2px),
+        radial-gradient(1px 1px at 260px 190px, rgba(251,113,133,.22), transparent 2px);
       background-size: 400px 220px;
-      opacity:0.35;
+      opacity:.35;
       animation: drift 24s linear infinite;
     }
-    @keyframes drift{
-      from{ transform:translateY(0); }
-      to{ transform:translateY(-120px); }
+    @keyframes drift{ from{ transform:translateY(0);} to{ transform:translateY(-120px);} }
+
+    /* Big neon title style like screenshots */
+    .neon{
+      color: rgba(255,255,255,.92);
+      text-shadow:
+        0 0 14px rgba(179,125,255,.60),
+        0 0 34px rgba(124,58,237,.35),
+        0 0 54px rgba(34,211,238,.16);
+    }
+    .neon-stroke{
+      -webkit-text-stroke: 1px rgba(225,210,255,.25);
+      text-stroke: 1px rgba(225,210,255,.25);
     }
 
-    /* Glass card */
+    /* Header lines above/below section titles */
+    .title-rails{
+      display:inline-flex;
+      align-items:center;
+      gap: 14px;
+      opacity:.95;
+    }
+    .rail{
+      height: 2px;
+      width: 120px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+      box-shadow: 0 0 20px rgba(179,125,255,.35);
+    }
+
+    /* Glass panels (for the big textbox on Earth) */
     .glass{
-      background: linear-gradient(180deg, var(--card), var(--card2));
-      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 30px 90px rgba(0,0,0,.45);
+    }
+
+    /* Corner brackets like template */
+    .brackets{ position:relative; }
+    .brackets:before, .brackets:after{
+      content:"";
+      position:absolute;
+      width: 22px; height: 22px;
+      border: 2px solid rgba(225,210,255,.55);
+      filter: drop-shadow(0 0 12px rgba(179,125,255,.35));
+    }
+    .brackets:before{ left:-10px; top:-10px; border-right:none; border-bottom:none; }
+    .brackets:after{ right:-10px; bottom:-10px; border-left:none; border-top:none; }
+    .brackets .bracket-tr, .brackets .bracket-bl{ position:absolute; width:22px; height:22px; border:2px solid rgba(225,210,255,.55); }
+    .brackets .bracket-tr{ right:-10px; top:-10px; border-left:none; border-bottom:none; }
+    .brackets .bracket-bl{ left:-10px; bottom:-10px; border-right:none; border-top:none; }
+
+    /* Left social rail */
+    .social-rail{
+      position: fixed;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      z-index: 50;
+    }
+    .sbtn{
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      display:grid;
+      place-items:center;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
     }
+    .sbtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.26); }
 
-    /* Gradient text + glow */
-    .grad-text{
-      background: linear-gradient(90deg, #e9d5ff, #99f6e4, #fecdd3);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-    .soft-glow{
-      text-shadow:
-        0 0 30px rgba(124,58,237,0.28),
-        0 0 18px rgba(34,211,238,0.18);
-    }
-
-    /* Buttons */
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:.5rem;
-      padding:.65rem 1rem;
+    /* Nav arrows */
+    .nav-arrow{
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 60;
+      width: 54px;
+      height: 54px;
       border-radius: 999px;
-      font-weight:600;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
-      border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.20);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display:grid;
+      place-items:center;
+      color: rgba(255,255,255,.90);
+      box-shadow: 0 20px 50px rgba(0,0,0,.35);
+      transition: transform .18s ease, background .18s ease;
     }
-    .btn:hover{ transform: translateY(-1px); }
-    .btn-primary{
-      background: linear-gradient(90deg, rgba(124,58,237,0.95), rgba(34,211,238,0.85));
-      box-shadow: 0 12px 30px rgba(34,211,238,0.16), 0 10px 30px rgba(124,58,237,0.20);
-      border-color: rgba(255,255,255,0.18);
-    }
-    .btn-primary:hover{
-      box-shadow: 0 16px 40px rgba(34,211,238,0.22), 0 14px 40px rgba(124,58,237,0.26);
-    }
-    .btn-ghost{
-      background: rgba(255,255,255,0.04);
-    }
-    .btn-ghost:hover{
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.22);
-    }
+    .nav-arrow:hover{ transform: translateY(-50%) scale(1.03); background: rgba(255,255,255,.12); }
+    .nav-left{ left: 18px; }
+    .nav-right{ right: 18px; }
 
-    /* Badges */
-    .chip{
+    /* Bottom scroll hint */
+    .scroll-hint{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      color: rgba(255,255,255,.75);
+      font-weight: 800;
+      letter-spacing:.08em;
+      text-transform: uppercase;
       font-size: 12px;
-      padding: 0.35rem 0.65rem;
+    }
+    .scroll-pill{
+      width: 46px;
+      height: 46px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.05);
-      color: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.20);
+      display:grid;
+      place-items:center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
-    /* Divider line */
-    .divider{
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+    /* Top-right “CONTACT ME” badge (like template) */
+    .top-cta{
+      position: fixed;
+      right: 18px;
+      top: 18px;
+      z-index: 60;
+      font-weight: 900;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 14px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
-    /* Anchor offset for sticky nav */
-    section{ scroll-margin-top: 92px; }
+    /* “Press back” bottom-left hint */
+    .press-back{
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      z-index: 60;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap: 6px;
+      color: rgba(255,255,255,.78);
+      font-weight: 900;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .press-icon{
+      width: 52px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.20);
+      display:grid;
+      place-items:center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
 
-    /* Reduced motion */
+    /* “Earth” arc at bottom (simple SVG) */
+    .earth{
+      position:absolute;
+      left:50%;
+      bottom:-10px;
+      transform: translateX(-50%);
+      width: min(1100px, 110vw);
+      z-index:-1;
+      opacity:.95;
+      filter: drop-shadow(0 25px 55px rgba(34,211,238,.10));
+    }
+
+    /* Astronaut (simple SVG) */
+    .astro{
+      position:absolute;
+      left:50%;
+      bottom: clamp(180px, 22vh, 260px);
+      transform: translateX(-50%);
+      width: 110px;
+      z-index: 5;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,.45));
+      animation: floaty 3.8s ease-in-out infinite;
+    }
+    @keyframes floaty{ 0%,100%{ transform: translateX(-50%) translateY(0);} 50%{ transform: translateX(-50%) translateY(-8px);} }
+
+    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       .stars2{ animation:none; }
-      .btn{ transition:none; }
+      .astro{ animation:none; }
     }
+
+    /* Inputs (contact scene) */
+    .field{
+      width: 100%;
+      border-radius: 14px;
+      padding: 14px 14px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.92);
+      outline:none;
+    }
+    .field:focus{ border-color: rgba(179,125,255,.45); box-shadow: 0 0 0 4px rgba(124,58,237,.18); }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.6rem;
+      padding:.78rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing:.06em;
+      text-transform: uppercase;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.26); }
+    .btn-primary{
+      background: linear-gradient(90deg, rgba(124,58,237,.95), rgba(34,211,238,.80));
+      border-color: rgba(255,255,255,.22);
+      box-shadow: 0 18px 50px rgba(124,58,237,.18), 0 18px 50px rgba(34,211,238,.12);
+    }
+
+    /* Small helper */
+    .kbd{ font-weight:900; letter-spacing:.08em; }
   </style>
 </head>
 
-<body class="antialiased">
-  <div class="stars"></div>
-  <div class="stars2"></div>
+<body>
+  <!-- UI chrome (matches the template vibe) -->
+  <a class="top-cta neon" href="#contact" id="topContact">CONTACT ME</a>
 
-  <!-- Sticky Nav -->
-  <header class="sticky top-0 z-50">
-    <div class="mx-auto max-w-6xl px-4 py-3">
-      <div class="glass rounded-2xl px-4 py-3 flex items-center justify-between">
-        <a href="#top" class="flex items-center gap-3">
-          <div class="h-9 w-9 rounded-xl glass grid place-items-center">
-            <span class="text-sm soft-glow">✦</span>
-          </div>
-          <div class="leading-tight">
-            <p class="font-semibold text-white/90">Seljan Karimli</p>
-            <p class="text-xs text-white/55">Robotics · AI · Backend</p>
-          </div>
-        </a>
+  <div class="social-rail" aria-label="social links">
+    <a class="sbtn" href="https://github.com/SelKarimli" target="_blank" rel="noreferrer" aria-label="GitHub">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.64.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.64-.33 2.49-.34.85.01 1.69.12 2.49.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.86v2.74c0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10Z" fill="rgba(255,255,255,.85)"/></svg>
+    </a>
+    <a class="sbtn" href="https://www.linkedin.com/in/seljankarimli" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 24h4V7.5h-4V24ZM8 7.5h3.8v2.2h.05c.53-1 1.82-2.2 3.75-2.2 4.01 0 4.75 2.6 4.75 6V24h-4v-9.2c0-2.2-.04-5-3.05-5-3.05 0-3.52 2.3-3.52 4.85V24H8V7.5Z" fill="rgba(255,255,255,.85)"/></svg>
+    </a>
+    <a class="sbtn" href="mailto:selkakva@gmail.com" aria-label="Email">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm0 2 8 5 8-5" stroke="rgba(255,255,255,.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
 
-        <nav class="hidden md:flex items-center gap-6 text-sm text-white/70">
-          <a class="hover:text-white/90 transition" href="#about">About</a>
-          <a class="hover:text-white/90 transition" href="#experience">Experience</a>
-          <a class="hover:text-white/90 transition" href="#projects">Projects</a>
-          <a class="hover:text-white/90 transition" href="#skills">Skills</a>
-          <a class="hover:text-white/90 transition" href="#hackathons">Hackathons</a>
-          <a class="hover:text-white/90 transition" href="#contact">Contact</a>
-        </nav>
+  <button class="nav-arrow nav-left" id="prevBtn" aria-label="previous section">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18 9 12l6-6" stroke="rgba(255,255,255,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <button class="nav-arrow nav-right" id="nextBtn" aria-label="next section">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6l6 6-6 6" stroke="rgba(255,255,255,.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
 
-        <div class="flex items-center gap-2">
-          <a class="btn btn-ghost text-sm" href="#projects">View work</a>
-          <a class="btn btn-primary text-sm" href="#contact">Hire / Collaborate</a>
-        </div>
-      </div>
+  <div class="press-back">
+    <div>PRESS</div>
+    <div class="press-icon" title="Go back one scene">
+      <span class="kbd">⏎</span>
     </div>
-  </header>
+  </div>
 
-  <!-- Hero -->
-  <main id="top" class="mx-auto max-w-6xl px-4 pt-10 pb-14">
-    <section class="relative">
-      <div class="glass rounded-3xl p-6 md:p-10 overflow-hidden">
-        <!-- Ambient planet blobs -->
-        <div class="absolute -top-24 -right-24 h-72 w-72 rounded-full blur-3xl"
-             style="background: radial-gradient(circle at 30% 30%, rgba(124,58,237,0.55), rgba(124,58,237,0.05) 65%, transparent 72%);">
-        </div>
-        <div class="absolute -bottom-28 -left-20 h-72 w-72 rounded-full blur-3xl"
-             style="background: radial-gradient(circle at 40% 40%, rgba(34,211,238,0.45), rgba(34,211,238,0.04) 60%, transparent 72%);">
-        </div>
+  <div class="scroll-hint">
+    <div>SCROLL</div>
+    <div class="scroll-pill" title="Scroll to move between scenes">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round"/><path d="M7 10l5-5 5 5" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 14l5 5 5-5" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
 
-        <div class="relative grid md:grid-cols-12 gap-8 items-center">
-          <div class="md:col-span-8">
-            <p class="inline-flex items-center gap-2 text-xs md:text-sm text-white/65">
-              <span class="chip">Baku, Azerbaijan</span>
-              <span class="chip">IELTS 8.0</span>
-              <span class="chip">Open to Internships 2026</span>
-            </p>
+  <!-- SCROLL CONTAINER -->
+  <div class="snap" id="snap">
 
-            <h1 class="mt-5 text-4xl md:text-6xl font-bold leading-tight soft-glow">
-              Building <span class="grad-text">production backends</span><br class="hidden md:block" />
-              for <span class="grad-text">robotics & AI</span> systems.
-            </h1>
+    <!-- SCENE 1: HERO / EARTH MESSAGE -->
+    <section class="scene" id="home" data-title="Home" style="background:
+      radial-gradient(1100px 600px at 55% 30%, rgba(124,58,237,.40), transparent 55%),
+      radial-gradient(900px 560px at 50% 80%, rgba(34,211,238,.18), transparent 60%),
+      linear-gradient(180deg, rgba(4,6,18,.85), rgba(6,7,26,.92));">
 
-            <p class="mt-5 text-white/70 text-base md:text-lg max-w-2xl">
-              I’m a Computer Engineering student combining <span class="text-white/85 font-semibold">.NET 8 + MongoDB</span>
-              product engineering with <span class="text-white/85 font-semibold">ROS 2 perception</span>, depth sensors,
-              and reproducible ML pipelines.
-            </p>
+      <div class="stars"></div>
+      <div class="stars2"></div>
 
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a class="btn btn-primary" href="#projects">See projects</a>
-              <a class="btn btn-ghost" href="#experience">Experience</a>
-              <a class="btn btn-ghost" href="mailto:selkakva@gmail.com">Email me</a>
-            </div>
+      <!-- “planet” on top-left like the template -->
+      <div class="absolute -left-36 -top-36 h-[320px] w-[320px] rounded-full opacity-80"
+           style="background: radial-gradient(circle at 35% 35%, rgba(255,255,255,.20), rgba(124,58,237,.35) 35%, rgba(34,211,238,.12) 62%, transparent 70%);
+                  filter: blur(.2px);"></div>
+      <div class="absolute left-12 top-16 h-1 w-1 rounded-full" style="box-shadow:
+           0 0 0 0 rgba(255,255,255,.0),
+           220px 120px 0 0 rgba(255,255,255,.65),
+           340px 40px 0 0 rgba(255,255,255,.55),
+           610px 160px 0 0 rgba(255,255,255,.45),
+           780px 80px 0 0 rgba(255,255,255,.55);"></div>
 
-            <div class="mt-7 flex flex-wrap items-center gap-4 text-sm text-white/60">
-              <span class="inline-flex items-center gap-2">
-                <span class="text-white/40">Email:</span>
-                <a class="hover:text-white/85 underline underline-offset-4" href="mailto:selkakva@gmail.com">selkakva@gmail.com</a>
-              </span>
-              <span class="text-white/25">•</span>
-              <span class="inline-flex items-center gap-2">
-                <span class="text-white/40">GitHub:</span>
-                <a class="hover:text-white/85 underline underline-offset-4" href="https://github.com/SelKarimli" target="_blank" rel="noreferrer">SelKarimli</a>
-              </span>
-              <span class="text-white/25">•</span>
-              <span class="inline-flex items-center gap-2">
-                <span class="text-white/40">LinkedIn:</span>
-                <a class="hover:text-white/85 underline underline-offset-4" href="https://www.linkedin.com/in/seljankarimli" target="_blank" rel="noreferrer">/in/seljankarimli</a>
-              </span>
-            </div>
+      <!-- Content -->
+      <div class="w-full max-w-5xl">
+        <div class="text-center">
+          <div class="title-rails justify-center">
+            <span class="rail"></span>
+            <span class="text-xs font-extrabold tracking-[.22em] uppercase text-white/70">A message from Earth</span>
+            <span class="rail"></span>
           </div>
 
-          <!-- Right: “orbit” card -->
-          <div class="md:col-span-4">
-            <div class="glass rounded-3xl p-6">
-              <p class="text-sm text-white/70 font-semibold">Focus areas</p>
-              <div class="mt-4 space-y-3 text-sm text-white/65">
-                <div class="glass rounded-2xl p-4">
-                  <p class="font-semibold text-white/85">Backend Systems</p>
-                  <p class="mt-1">APIs, auth, CI, MongoDB schemas, admin tooling.</p>
-                </div>
-                <div class="glass rounded-2xl p-4">
-                  <p class="font-semibold text-white/85">Robotics Perception</p>
-                  <p class="mt-1">ROS 2 pipelines, depth sensing, 3D reconstruction.</p>
-                </div>
-                <div class="glass rounded-2xl p-4">
-                  <p class="font-semibold text-white/85">ML Pipelines</p>
-                  <p class="mt-1">Python, evaluation loops, reproducible experiments.</p>
-                </div>
-              </div>
+          <h1 class="mt-4 text-4xl md:text-6xl font-black tracking-tight neon neon-stroke">
+            HELLO FELLOW GALAXY MEMBER
+          </h1>
 
-              <div class="mt-5 divider"></div>
-
-              <div class="mt-5 flex flex-wrap gap-2">
-                <span class="chip">.NET 8</span>
-                <span class="chip">Flutter</span>
-                <span class="chip">MongoDB</span>
-                <span class="chip">ROS 2</span>
-                <span class="chip">PyTorch</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Stats strip -->
-      <div class="mt-6 grid md:grid-cols-3 gap-4">
-        <div class="glass rounded-2xl p-5">
-          <p class="text-white/55 text-xs">Production</p>
-          <p class="mt-1 text-lg font-semibold text-white/90">Technocare shipped</p>
-          <p class="mt-2 text-sm text-white/65">Flutter clients + .NET 8 backend + MongoDB.</p>
-        </div>
-        <div class="glass rounded-2xl p-5">
-          <p class="text-white/55 text-xs">Research</p>
-          <p class="mt-1 text-lg font-semibold text-white/90">METU ROMER intern</p>
-          <p class="mt-2 text-sm text-white/65">ROS 2 + RealSense D455 + Franka arm.</p>
-        </div>
-        <div class="glass rounded-2xl p-5">
-          <p class="text-white/55 text-xs">Competitions</p>
-          <p class="mt-1 text-lg font-semibold text-white/90">Multiple 1st places</p>
-          <p class="mt-2 text-sm text-white/65">Hackathons (GDG, SabahLab) + Bitget prize.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="mt-12">
-      <div class="glass rounded-3xl p-6 md:p-10">
-        <div class="flex items-end justify-between gap-4">
-          <h2 class="text-2xl md:text-3xl font-semibold">About</h2>
-          <span class="text-xs text-white/45">What I optimize for: clarity → measurement → deployment</span>
-        </div>
-
-        <div class="mt-6 grid md:grid-cols-12 gap-8">
-          <div class="md:col-span-8 text-white/70 leading-relaxed">
-            <p>
-              I’m a Computer Engineering student focused on building reliable backend systems and research-oriented
-              robotics/AI pipelines. My work spans production development (<span class="text-white/85 font-semibold">Flutter + .NET 8 + MongoDB</span>)
-              and robotics research (<span class="text-white/85 font-semibold">ROS 2 perception, depth sensors, 3D reconstruction</span>).
-            </p>
-            <p class="mt-4">
-              I’m especially interested in the intersection of <span class="text-white/85 font-semibold">robotics perception</span>,
-              <span class="text-white/85 font-semibold">ML pipelines</span>, and <span class="text-white/85 font-semibold">scalable software</span> —
-              where experiments can be reproduced, measured, and deployed.
-            </p>
+          <div class="mt-6 text-center">
+            <p class="text-sm font-extrabold tracking-[.22em] uppercase text-white/65">A message from Earth</p>
+            <h2 class="mt-3 text-3xl md:text-5xl font-black neon neon-stroke">I AM SELJAN</h2>
           </div>
 
-          <div class="md:col-span-4">
-            <div class="glass rounded-2xl p-6">
-              <p class="text-sm font-semibold text-white/85">Quick links</p>
-              <div class="mt-4 flex flex-col gap-2 text-sm">
-                <a class="btn btn-ghost justify-start" href="#projects">→ Selected projects</a>
-                <a class="btn btn-ghost justify-start" href="#experience">→ Experience timeline</a>
-                <a class="btn btn-ghost justify-start" href="#hackathons">→ Hackathons</a>
-                <a class="btn btn-ghost justify-start" href="#contact">→ Contact</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="mt-12">
-      <div class="glass rounded-3xl p-6 md:p-10">
-        <h2 class="text-2xl md:text-3xl font-semibold">Education</h2>
-
-        <div class="mt-6 grid md:grid-cols-3 gap-4">
-          <div class="glass rounded-2xl p-6">
-            <p class="text-xs text-white/55">2022 – 2026</p>
-            <p class="mt-2 font-semibold text-white/90">Azerbaijan Technical University</p>
-            <p class="mt-2 text-sm text-white/65">Computer Engineering · <span class="text-white/85 font-semibold">GPA: 93/100</span></p>
-          </div>
-          <div class="glass rounded-2xl p-6">
-            <p class="text-xs text-white/55">2023 – 2024</p>
-            <p class="mt-2 font-semibold text-white/90">La Sapienza University of Rome</p>
-            <p class="mt-2 text-sm text-white/65">Applied CS & AI (Erasmus)</p>
-          </div>
-          <div class="glass rounded-2xl p-6">
-            <p class="text-xs text-white/55">2011 – 2022</p>
-            <p class="mt-2 font-semibold text-white/90">Baku European Lyceum</p>
-            <p class="mt-2 text-sm text-white/65">High School · <span class="text-white/85 font-semibold">GPA: 4.83/5.00</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="mt-12">
-      <div class="glass rounded-3xl p-6 md:p-10">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
-          <h2 class="text-2xl md:text-3xl font-semibold">Experience</h2>
-          <p class="text-sm text-white/55">Production engineering + robotics research</p>
-        </div>
-
-        <div class="mt-8 space-y-4">
-          <!-- Technocare -->
-          <div class="glass rounded-2xl p-6">
-            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
-              <p class="text-lg font-semibold text-white/90">Technocare LLC — Software Developer</p>
-              <p class="text-sm text-white/55">May 2025 – Present</p>
-            </div>
-            <ul class="mt-3 text-white/70 text-sm list-disc list-inside space-y-2">
-              <li>Designed and deployed a production-scale medical e-commerce and automation platform.</li>
-              <li>Developed cross-platform Flutter applications and a C#/.NET 8 REST backend.</li>
-              <li>Architected MongoDB schemas, JWT-based authentication, admin dashboards, and CI workflows.</li>
-            </ul>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="chip">Flutter</span><span class="chip">.NET 8</span><span class="chip">MongoDB</span><span class="chip">JWT</span>
-            </div>
-          </div>
-
-          <!-- ROMER -->
-          <div class="glass rounded-2xl p-6">
-            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
-              <p class="text-lg font-semibold text-white/90">METU ROMER — Summer Research Intern</p>
-              <p class="text-sm text-white/55">Jul 2025 – Aug 2025</p>
-            </div>
-            <ul class="mt-3 text-white/70 text-sm list-disc list-inside space-y-2">
-              <li>Robotics and AI research within the BEKO project for domestic object recognition.</li>
-              <li>Built ROS 2 pipelines integrating Intel RealSense D455 with Franka RobotArm.</li>
-              <li>Implemented Python-based 3D reconstruction, camera calibration, and sensor fusion.</li>
-              <li>Worked with Vision–Language–Action and LLM-based robotic reasoning models.</li>
-            </ul>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="chip">ROS 2</span><span class="chip">RealSense D455</span><span class="chip">3D Reconstruction</span><span class="chip">Python</span>
-            </div>
-          </div>
-
-          <!-- Teaching -->
-          <div class="glass rounded-2xl p-6">
-            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
-              <p class="text-lg font-semibold text-white/90">Python Instructor — Lab Tutor</p>
-              <p class="text-sm text-white/55">2023 – Present</p>
-            </div>
-            <ul class="mt-3 text-white/70 text-sm list-disc list-inside space-y-2">
-              <li>Teaching Python, data structures, algorithms, and ML fundamentals to students.</li>
-            </ul>
-          </div>
-
-          <!-- Two small cards -->
-          <div class="grid md:grid-cols-2 gap-4">
-            <div class="glass rounded-2xl p-6">
-              <div class="flex items-baseline justify-between gap-2">
-                <p class="font-semibold text-white/90">Backend Developer — Freelance</p>
-                <span class="text-xs text-white/55">Feb 2025 – Present</span>
-              </div>
-              <p class="mt-2 text-sm text-white/65">
-                Built multiple web backends for clients (private repos). Focus: REST APIs, auth flows, database design.
+          <div class="mt-10 flex justify-center">
+            <div class="glass brackets rounded-2xl px-6 py-6 md:px-10 md:py-9 w-full max-w-3xl">
+              <span class="bracket-tr"></span><span class="bracket-bl"></span>
+              <p class="text-base md:text-lg text-white/80 leading-relaxed">
+                I build <span class="font-extrabold text-white">production backends</span> for <span class="font-extrabold text-white">robotics & AI</span> systems.
+                My main stack is <span class="font-extrabold text-white">.NET 8 + MongoDB</span> with Flutter clients, and I also work with
+                <span class="font-extrabold text-white">ROS 2 perception</span>, depth sensors, and reproducible ML pipelines.
               </p>
-            </div>
-
-            <div class="glass rounded-2xl p-6">
-              <div class="flex items-baseline justify-between gap-2">
-                <p class="font-semibold text-white/90">Senior ICT-Master — Baku European Lyceum</p>
-                <span class="text-xs text-white/55">2017 – 2022</span>
+              <div class="mt-5 flex flex-wrap justify-center gap-2">
+                <span class="px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">Baku, Azerbaijan</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">IELTS 8.0</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">Open to Internships 2026</span>
               </div>
-              <ul class="mt-2 text-sm text-white/65 list-disc list-inside space-y-1">
-                <li>Taught C/C++ fundamentals and competitive programming.</li>
-                <li>Participated in STEM humanoid robot races and performance optimization experiments.</li>
-              </ul>
+              <div class="mt-7 flex flex-wrap justify-center gap-3">
+                <a href="#projects" class="btn btn-primary">Click to open</a>
+                <a href="#experience" class="btn">Experience</a>
+                <a href="mailto:selkakva@gmail.com" class="btn">Email me</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Astronaut + Earth arc -->
+      <svg class="astro" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="gSuit" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="rgba(255,255,255,.92)"/>
+            <stop offset="1" stop-color="rgba(255,255,255,.76)"/>
+          </linearGradient>
+          <linearGradient id="gVis" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="rgba(124,58,237,.55)"/>
+            <stop offset="1" stop-color="rgba(34,211,238,.35)"/>
+          </linearGradient>
+        </defs>
+        <circle cx="70" cy="55" r="30" fill="url(#gSuit)" opacity=".95"/>
+        <circle cx="70" cy="55" r="22" fill="url(#gVis)" opacity=".9"/>
+        <rect x="45" y="78" width="50" height="38" rx="16" fill="url(#gSuit)" opacity=".95"/>
+        <rect x="56" y="88" width="28" height="18" rx="6" fill="rgba(34,211,238,.20)" stroke="rgba(255,255,255,.35)"/>
+        <circle cx="48" cy="98" r="9" fill="url(#gSuit)"/>
+        <circle cx="92" cy="98" r="9" fill="url(#gSuit)"/>
+        <path d="M58 116c2 10 22 10 24 0" stroke="rgba(255,255,255,.55)" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+
+      <svg class="earth" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <radialGradient id="gEarth" cx="50%" cy="0%" r="95%">
+            <stop offset="0%" stop-color="rgba(34,211,238,.55)"/>
+            <stop offset="55%" stop-color="rgba(59,130,246,.35)"/>
+            <stop offset="100%" stop-color="rgba(14,26,60,.10)"/>
+          </radialGradient>
+        </defs>
+        <path d="M-50,420 C160,190 420,70 600,70 C780,70 1040,190 1250,420" fill="url(#gEarth)" opacity=".9"/>
+        <path d="M-50,420 C160,200 420,95 600,95 C780,95 1040,200 1250,420" fill="none" stroke="rgba(34,211,238,.65)" stroke-width="10" opacity=".55"/>
+        <path d="M-50,420 C160,210 420,120 600,120 C780,120 1040,210 1250,420" fill="none" stroke="rgba(255,255,255,.30)" stroke-width="3" opacity=".45"/>
+      </svg>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="mt-12">
-      <div class="glass rounded-3xl p-6 md:p-10">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-semibold">Selected Projects</h2>
-            <p class="mt-2 text-sm text-white/55">What I’d happily talk about in an interview.</p>
-          </div>
-          <a class="btn btn-ghost text-sm" href="https://github.com/SelKarimli" target="_blank" rel="noreferrer">
-            View GitHub →
-          </a>
+    <!-- SCENE 2: PROJECTS (carousel-like) -->
+    <section class="scene" id="projects" data-title="Projects" style="background:
+      radial-gradient(900px 600px at 50% 35%, rgba(34,211,238,.16), transparent 55%),
+      radial-gradient(1200px 700px at 65% 30%, rgba(124,58,237,.30), transparent 60%),
+      linear-gradient(180deg, rgba(3,5,14,.92), rgba(7,10,32,.92));">
+
+      <div class="stars"></div>
+      <div class="stars2"></div>
+
+      <!-- floating rocks (simple shapes) -->
+      <div class="absolute inset-0 -z-10 opacity-60">
+        <svg class="w-full h-full" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <g fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.08)">
+            <path d="M190 160l70-30 40 55-30 55-80-10-20-45z"/>
+            <path d="M860 140l90 30-20 70-70 20-50-50 50-70z"/>
+            <path d="M980 380l70 20 10 70-70 30-55-40 15-80z"/>
+            <path d="M260 420l80 15 15 60-60 40-70-35 35-80z"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="w-full max-w-5xl text-center">
+        <div class="title-rails justify-center">
+          <span class="rail"></span>
+          <span class="text-sm font-black tracking-[.18em] uppercase neon">My Projects</span>
+          <span class="rail"></span>
         </div>
 
-        <div class="mt-8 grid md:grid-cols-2 gap-4">
-          <article class="glass rounded-2xl p-6">
-            <div class="flex items-start justify-between gap-3">
-              <h3 class="text-lg font-semibold text-white/90">Technocare Platform</h3>
-              <span class="chip">Published</span>
-            </div>
-            <p class="mt-2 text-sm text-white/65">
-              End-to-end engineering services and e-commerce system with Flutter clients (Android/Web/Windows) and a .NET 8 REST backend.
-            </p>
-            <ul class="mt-3 text-sm text-white/70 list-disc list-inside space-y-1">
-              <li>MongoDB-backed order, cart, notification, and application pipelines</li>
-              <li>JWT authentication + admin dashboard tooling</li>
-            </ul>
+        <h2 class="mt-6 text-3xl md:text-5xl font-black neon neon-stroke">PROJECTS YOU CAN CLICK</h2>
+        <p class="mt-4 text-white/70 max-w-2xl mx-auto">Use the arrows (or scroll) to move. Each card is a clean summary — no boring walls of text.</p>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-4">
+          <article class="glass rounded-2xl p-6 text-left">
+            <p class="text-xs font-extrabold tracking-[.18em] uppercase text-white/60">Featured</p>
+            <h3 class="mt-2 text-lg font-extrabold neon">Technocare Platform</h3>
+            <p class="mt-2 text-sm text-white/70">Production medical e-commerce + automation: Flutter clients + .NET 8 backend + MongoDB.</p>
             <div class="mt-4 flex flex-wrap gap-2">
-              <span class="chip">Flutter</span><span class="chip">.NET 8</span><span class="chip">MongoDB</span><span class="chip">JWT</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">.NET 8</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">MongoDB</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">Flutter</span>
+            </div>
+            <div class="mt-5">
+              <a class="btn btn-primary w-full" href="#contact">Ask for demo</a>
             </div>
           </article>
 
-          <article class="glass rounded-2xl p-6">
-            <h3 class="text-lg font-semibold text-white/90">Family Face Recognition</h3>
-            <p class="mt-2 text-sm text-white/65">
-              Python-based ML system for controlled face recognition tasks with dataset management, evaluation, and inference pipelines.
-            </p>
-            <ul class="mt-3 text-sm text-white/70 list-disc list-inside space-y-1">
-              <li>Classical CV + deep learning workflows</li>
-              <li>Modular structure for fast experimentation</li>
-            </ul>
+          <article class="glass rounded-2xl p-6 text-left">
+            <p class="text-xs font-extrabold tracking-[.18em] uppercase text-white/60">GitHub</p>
+            <h3 class="mt-2 text-lg font-extrabold neon">Family Face Recognition</h3>
+            <p class="mt-2 text-sm text-white/70">Python ML system with dataset management, evaluation, and inference pipelines.</p>
             <div class="mt-4 flex flex-wrap gap-2">
-              <span class="chip">Python</span><span class="chip">Computer Vision</span><span class="chip">ML Pipelines</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">Python</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">CV</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">Pipelines</span>
+            </div>
+            <div class="mt-5">
+              <a class="btn w-full" href="https://github.com/SelKarimli/FamilyFaceRecognition" target="_blank" rel="noreferrer">Open repo</a>
             </div>
           </article>
 
-          <article class="glass rounded-2xl p-6 md:col-span-2">
-            <h3 class="text-lg font-semibold text-white/90">Robotics & Perception Pipelines</h3>
-            <p class="mt-2 text-sm text-white/65">
-              ROS 2-based object recognition and spatial understanding experiments for robotics perception.
-            </p>
-            <ul class="mt-3 text-sm text-white/70 list-disc list-inside space-y-1">
-              <li>RealSense depth processing, MeshLab refinement, IsaacSim simulation</li>
-              <li>Benchmark-friendly codebase designed for iteration</li>
-            </ul>
+          <article class="glass rounded-2xl p-6 text-left">
+            <p class="text-xs font-extrabold tracking-[.18em] uppercase text-white/60">Research</p>
+            <h3 class="mt-2 text-lg font-extrabold neon">Robotics Perception</h3>
+            <p class="mt-2 text-sm text-white/70">ROS 2 pipelines, RealSense depth sensing, 3D reconstruction, simulation experiments.</p>
             <div class="mt-4 flex flex-wrap gap-2">
-              <span class="chip">ROS 2</span><span class="chip">RealSense D455</span><span class="chip">3D Reconstruction</span><span class="chip">IsaacSim</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">ROS 2</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">RealSense</span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">3D</span>
+            </div>
+            <div class="mt-5">
+              <a class="btn w-full" href="#experience">See intern work</a>
             </div>
           </article>
         </div>
 
-        <div class="mt-6 glass rounded-2xl p-6">
-          <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
-            <p class="font-semibold text-white/90">Smart Home System — Barama (Azercell)</p>
-            <p class="text-sm text-white/55">Jun 2018 – Aug 2018</p>
-          </div>
-          <p class="mt-2 text-sm text-white/65">
-            Built a smart home prototype using Python and Arduino devices, with a simple web interface (HTML/CSS).
+        <div class="mt-10 glass brackets rounded-2xl px-6 py-6 max-w-3xl mx-auto">
+          <span class="bracket-tr"></span><span class="bracket-bl"></span>
+          <p class="text-white/75">
+            Want thumbnails like the template? Add your screenshots later and I’ll plug them into these cards as background images.
           </p>
         </div>
       </div>
+
+      <svg class="earth" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:.85">
+        <defs>
+          <radialGradient id="gEarth2" cx="50%" cy="0%" r="95%">
+            <stop offset="0%" stop-color="rgba(124,58,237,.45)"/>
+            <stop offset="55%" stop-color="rgba(34,211,238,.24)"/>
+            <stop offset="100%" stop-color="rgba(14,26,60,.08)"/>
+          </radialGradient>
+        </defs>
+        <path d="M-50,420 C160,190 420,70 600,70 C780,70 1040,190 1250,420" fill="url(#gEarth2)"/>
+        <path d="M-50,420 C160,205 420,105 600,105 C780,105 1040,205 1250,420" fill="none" stroke="rgba(179,125,255,.55)" stroke-width="10" opacity=".45"/>
+      </svg>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="mt-12">
-      <div class="glass rounded-3xl p-6 md:p-10">
-        <h2 class="text-2xl md:text-3xl font-semibold">Skills</h2>
+    <!-- SCENE 3: EXPERIENCE -->
+    <section class="scene" id="experience" data-title="Experience" style="background:
+      radial-gradient(900px 560px at 45% 35%, rgba(179,125,255,.22), transparent 55%),
+      radial-gradient(900px 560px at 70% 75%, rgba(34,211,238,.12), transparent 60%),
+      linear-gradient(180deg, rgba(5,6,18,.92), rgba(10,9,26,.92));">
 
-        <div class="mt-6 grid md:grid-cols-3 gap-4">
-          <div class="glass rounded-2xl p-6">
-            <p class="font-semibold text-white/90">Programming</p>
-            <p class="mt-2 text-sm text-white/65">Python, C#, C++, Dart, SQL</p>
-          </div>
+      <div class="stars"></div>
+      <div class="stars2"></div>
 
-          <div class="glass rounded-2xl p-6">
-            <p class="font-semibold text-white/90">Frameworks</p>
-            <p class="mt-2 text-sm text-white/65">.NET 8, Flutter, ROS 2, PyTorch, MongoDB</p>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <p class="font-semibold text-white/90">Research Areas</p>
-            <p class="mt-2 text-sm text-white/65">Robotics, ML, Computer Vision, NLP, LLMs</p>
-          </div>
+      <div class="w-full max-w-5xl text-center">
+        <div class="title-rails justify-center">
+          <span class="rail"></span>
+          <span class="text-sm font-black tracking-[.18em] uppercase neon">My Work Experience</span>
+          <span class="rail"></span>
         </div>
 
-        <p class="mt-6 text-sm text-white/55">
-          Languages: English (IELTS 8.0), Azerbaijani (Native), Turkish (Native), Russian (Intermediate), French (Beginner), Italian (Beginner)
-        </p>
-      </div>
-    </section>
+        <h2 class="mt-6 text-3xl md:text-5xl font-black neon neon-stroke">I SHIP + I RESEARCH</h2>
 
-    <!-- Awards -->
-    <section id="awards" class="mt-12">
-      <div class="glass rounded-3xl p-6 md:p-10">
-        <h2 class="text-2xl md:text-3xl font-semibold">Awards & Activities</h2>
-
-        <div class="mt-6 grid md:grid-cols-2 gap-4">
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-baseline justify-between gap-3">
-              <p class="font-semibold text-white/90">Heydar Aliyev Presidential Scholarship</p>
-              <p class="text-sm text-white/55">2023</p>
-            </div>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="flex items-baseline justify-between gap-3">
-              <p class="font-semibold text-white/90">AFS STEM Academy Alumni — Egypt</p>
-              <p class="text-sm text-white/55">2022</p>
-            </div>
-            <p class="mt-2 text-sm text-white/65">
-              Focused on STEM, sustainability, design thinking, and social innovation; completed a capstone project and presentation.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Hackathons -->
-    <section id="hackathons" class="mt-12">
-      <div class="glass rounded-3xl p-6 md:p-10">
-        <h2 class="text-2xl md:text-3xl font-semibold">Hackathons & Competitions</h2>
-
-        <div class="mt-6 space-y-4">
-          <div class="glass rounded-2xl p-6">
-            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
-              <p class="font-semibold text-white/90">Bitget Hackathon — 3rd Place ($500 Award)</p>
-              <p class="text-sm text-white/55">May 2025</p>
-            </div>
-            <p class="mt-2 text-sm text-white/65">
-              Developed a blockchain-oriented investment platform (CopyStake), focusing on applied AI and fintech system design.
-            </p>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
-              <p class="font-semibold text-white/90">GDG Baku Vibe Hackathon — 1st Place</p>
-              <p class="text-sm text-white/55">June 2025</p>
-            </div>
-            <p class="mt-2 text-sm text-white/65">
-              Built an AI-powered app for personalized daily styling; applied recommendation systems and user-centric ML pipelines.
-            </p>
-          </div>
-
-          <div class="glass rounded-2xl p-6">
-            <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1">
-              <p class="font-semibold text-white/90">SabahLab Hackathon — 1st Place</p>
-              <p class="text-sm text-white/55">September 2025</p>
-            </div>
-            <p class="mt-2 text-sm text-white/65">
-              Designed a fintech platform for investing in intellectual property, emphasizing scalable backend architecture and AI-assisted analytics.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Communities -->
-    <section id="communities" class="mt-12">
-      <div class="glass rounded-3xl p-6 md:p-10">
-        <h2 class="text-2xl md:text-3xl font-semibold">Communities</h2>
-
-        <div class="mt-6 grid md:grid-cols-2 gap-4">
-          <div class="glass rounded-2xl p-6">
-            <p class="font-semibold text-white/90">Google Developer Group (GDG) Baku — Community Member</p>
-            <ul class="mt-2 text-sm text-white/65 list-disc list-inside space-y-1">
-              <li>Participated in developer events, hackathons, and AI-focused sessions.</li>
-              <li>Helped organize DevFest 2025 and a MicroSaaS hackathon.</li>
+        <div class="mt-10 grid md:grid-cols-2 gap-4 text-left">
+          <div class="glass brackets rounded-2xl p-6">
+            <span class="bracket-tr"></span><span class="bracket-bl"></span>
+            <p class="text-xs font-extrabold tracking-[.18em] uppercase text-white/60">May 2025 – Present</p>
+            <h3 class="mt-2 text-xl font-extrabold neon">Technocare — Software Developer</h3>
+            <ul class="mt-3 text-sm text-white/75 space-y-2 list-disc list-inside">
+              <li>.NET 8 REST API, MongoDB schemas, JWT auth, admin tools</li>
+              <li>Flutter clients across Android/Web/Windows</li>
+              <li>Orders, cart, notifications, applications, user management</li>
             </ul>
           </div>
 
-          <div class="glass rounded-2xl p-6">
-            <p class="font-semibold text-white/90">Women Techmakers (WTM) — Community Member</p>
-            <ul class="mt-2 text-sm text-white/65 list-disc list-inside space-y-1">
-              <li>Member of Google’s global initiative supporting diversity and leadership in technology.</li>
-              <li>Helped organize International Women’s Day (IWD) 2026.</li>
+          <div class="glass brackets rounded-2xl p-6">
+            <span class="bracket-tr"></span><span class="bracket-bl"></span>
+            <p class="text-xs font-extrabold tracking-[.18em] uppercase text-white/60">Jul 2025 – Aug 2025</p>
+            <h3 class="mt-2 text-xl font-extrabold neon">METU ROMER — Research Intern</h3>
+            <ul class="mt-3 text-sm text-white/75 space-y-2 list-disc list-inside">
+              <li>ROS 2 pipelines for domestic object recognition (BEKO project)</li>
+              <li>RealSense D455 + Franka robot integration</li>
+              <li>3D reconstruction + calibration experiments in Python</li>
             </ul>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Recommendations -->
-    <section id="recommendations" class="mt-12">
-      <div class="glass rounded-3xl p-6 md:p-10">
-        <h2 class="text-2xl md:text-3xl font-semibold">Recommendations</h2>
-
-        <div class="mt-6 grid md:grid-cols-2 gap-4">
-          <a class="glass rounded-2xl p-6 hover:scale-[1.01] transition"
-             href="https://www.linkedin.com/in/avalizada/" target="_blank" rel="noreferrer">
-            <p class="font-semibold text-white/90">Alakbar Valizada</p>
-            <p class="mt-1 text-sm text-white/65">Academic Advisor & Faculty (AzTU)</p>
-          </a>
-
-          <a class="glass rounded-2xl p-6 hover:scale-[1.01] transition"
-             href="https://www.linkedin.com/in/tural-hamzayev-5537bb390/" target="_blank" rel="noreferrer">
-            <p class="font-semibold text-white/90">Tural Hamzayev</p>
-            <p class="mt-1 text-sm text-white/65">Professional Supervisor (Technocare LLC)</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="mt-12">
-      <div class="glass rounded-3xl p-6 md:p-10">
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-semibold">Contact</h2>
-            <p class="mt-2 text-sm text-white/55">Fastest reply: email. I’m open to internships and research collaborations.</p>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <a class="btn btn-primary" href="mailto:selkakva@gmail.com">Email</a>
-            <a class="btn btn-ghost" href="https://github.com/SelKarimli" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/seljankarimli" target="_blank" rel="noreferrer">LinkedIn</a>
+          <div class="glass brackets rounded-2xl p-6 md:col-span-2">
+            <span class="bracket-tr"></span><span class="bracket-bl"></span>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+              <div>
+                <p class="text-xs font-extrabold tracking-[.18em] uppercase text-white/60">2023 – Present</p>
+                <h3 class="mt-2 text-xl font-extrabold neon">Python Instructor — Lab Tutor</h3>
+                <p class="mt-2 text-sm text-white/75">Teaching Python, data structures, algorithms, and ML fundamentals.</p>
+              </div>
+              <div class="flex gap-2">
+                <a class="btn btn-primary" href="#skills">My skills</a>
+                <a class="btn" href="#hackathons">Hackathons</a>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="mt-6 divider"></div>
+      <svg class="earth" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:.88">
+        <defs>
+          <radialGradient id="gEarth3" cx="50%" cy="0%" r="95%">
+            <stop offset="0%" stop-color="rgba(179,125,255,.40)"/>
+            <stop offset="55%" stop-color="rgba(34,211,238,.22)"/>
+            <stop offset="100%" stop-color="rgba(14,26,60,.08)"/>
+          </radialGradient>
+        </defs>
+        <path d="M-50,420 C160,190 420,70 600,70 C780,70 1040,190 1250,420" fill="url(#gEarth3)"/>
+        <path d="M-50,420 C160,205 420,105 600,105 C780,105 1040,205 1250,420" fill="none" stroke="rgba(255,255,255,.26)" stroke-width="3" opacity=".45"/>
+      </svg>
+    </section>
 
-        <p class="mt-6 text-xs text-white/45">
-          © 2026 Seljan Karimli · Built with HTML + TailwindCSS · Space-themed redesign
-        </p>
+    <!-- SCENE 4: SKILLS GRID (like the template boxes) -->
+    <section class="scene" id="skills" data-title="Skills" style="background:
+      radial-gradient(900px 560px at 35% 35%, rgba(34,211,238,.10), transparent 55%),
+      radial-gradient(900px 560px at 70% 55%, rgba(179,125,255,.22), transparent 60%),
+      linear-gradient(180deg, rgba(6,7,20,.92), rgba(12,11,28,.92));">
+
+      <div class="stars"></div>
+      <div class="stars2"></div>
+
+      <div class="w-full max-w-5xl text-center">
+        <div class="title-rails justify-center">
+          <span class="rail"></span>
+          <span class="text-sm font-black tracking-[.18em] uppercase neon">My Skills</span>
+          <span class="rail"></span>
+        </div>
+
+        <h2 class="mt-6 text-3xl md:text-5xl font-black neon neon-stroke">HERE IS A LIST OF SOME OF MY SKILLS</h2>
+
+        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
+          <!-- backend -->
+          <div class="glass rounded-xl p-4 text-center font-extrabold">.NET 8</div>
+          <div class="glass rounded-xl p-4 text-center font-extrabold">MongoDB</div>
+          <div class="glass rounded-xl p-4 text-center font-extrabold">REST APIs</div>
+          <div class="glass rounded-xl p-4 text-center font-extrabold">JWT Auth</div>
+          <!-- mobile -->
+          <div class="glass rounded-xl p-4 text-center font-extrabold">Flutter</div>
+          <div class="glass rounded-xl p-4 text-center font-extrabold">CI/CD</div>
+          <div class="glass rounded-xl p-4 text-center font-extrabold">Admin Tools</div>
+          <div class="glass rounded-xl p-4 text-center font-extrabold">SQL</div>
+          <!-- robotics/ai -->
+          <div class="glass rounded-xl p-4 text-center font-extrabold">ROS 2</div>
+          <div class="glass rounded-xl p-4 text-center font-extrabold">Python</div>
+          <div class="glass rounded-xl p-4 text-center font-extrabold">Computer Vision</div>
+          <div class="glass rounded-xl p-4 text-center font-extrabold">3D Reconstruction</div>
+        </div>
+
+        <div class="mt-10 glass brackets rounded-2xl px-6 py-6 max-w-3xl mx-auto">
+          <span class="bracket-tr"></span><span class="bracket-bl"></span>
+          <p class="text-white/75">
+            This section is built to look exactly like the template skill boxes — but filled with your real stack.
+          </p>
+        </div>
+      </div>
+
+      <svg class="earth" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:.82">
+        <defs>
+          <radialGradient id="gEarth4" cx="50%" cy="0%" r="95%">
+            <stop offset="0%" stop-color="rgba(34,211,238,.38)"/>
+            <stop offset="55%" stop-color="rgba(124,58,237,.20)"/>
+            <stop offset="100%" stop-color="rgba(14,26,60,.06)"/>
+          </radialGradient>
+        </defs>
+        <path d="M-50,420 C160,190 420,70 600,70 C780,70 1040,190 1250,420" fill="url(#gEarth4)"/>
+      </svg>
+    </section>
+
+    <!-- SCENE 5: HACKATHONS -->
+    <section class="scene" id="hackathons" data-title="Hackathons" style="background:
+      radial-gradient(1000px 600px at 60% 30%, rgba(251,113,133,.16), transparent 55%),
+      radial-gradient(900px 560px at 35% 60%, rgba(179,125,255,.20), transparent 60%),
+      linear-gradient(180deg, rgba(6,6,18,.92), rgba(10,8,22,.92));">
+
+      <div class="stars"></div>
+      <div class="stars2"></div>
+
+      <div class="w-full max-w-5xl text-center">
+        <div class="title-rails justify-center">
+          <span class="rail"></span>
+          <span class="text-sm font-black tracking-[.18em] uppercase neon">Hackathons</span>
+          <span class="rail"></span>
+        </div>
+
+        <h2 class="mt-6 text-3xl md:text-5xl font-black neon neon-stroke">PROOF I CAN SHIP FAST</h2>
+
+        <div class="mt-10 grid md:grid-cols-3 gap-4 text-left">
+          <div class="glass brackets rounded-2xl p-6">
+            <span class="bracket-tr"></span><span class="bracket-bl"></span>
+            <p class="text-xs font-extrabold tracking-[.18em] uppercase text-white/60">May 2025</p>
+            <h3 class="mt-2 text-lg font-extrabold neon">Bitget Hackathon — 3rd Place</h3>
+            <p class="mt-2 text-sm text-white/75">CopyStake: blockchain investment platform. System design + applied AI.</p>
+          </div>
+          <div class="glass brackets rounded-2xl p-6">
+            <span class="bracket-tr"></span><span class="bracket-bl"></span>
+            <p class="text-xs font-extrabold tracking-[.18em] uppercase text-white/60">Jun 2025</p>
+            <h3 class="mt-2 text-lg font-extrabold neon">GDG Baku Vibe — 1st Place</h3>
+            <p class="mt-2 text-sm text-white/75">AI-powered daily styling app with recommendation logic.</p>
+          </div>
+          <div class="glass brackets rounded-2xl p-6">
+            <span class="bracket-tr"></span><span class="bracket-bl"></span>
+            <p class="text-xs font-extrabold tracking-[.18em] uppercase text-white/60">Sep 2025</p>
+            <h3 class="mt-2 text-lg font-extrabold neon">SabahLab — 1st Place</h3>
+            <p class="mt-2 text-sm text-white/75">Fintech platform for investing in intellectual property.</p>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-wrap justify-center gap-3">
+          <a class="btn btn-primary" href="#contact">Contact</a>
+          <a class="btn" href="#home">Back to top</a>
+        </div>
+      </div>
+
+      <svg class="earth" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="opacity:.80">
+        <defs>
+          <radialGradient id="gEarth5" cx="50%" cy="0%" r="95%">
+            <stop offset="0%" stop-color="rgba(251,113,133,.30)"/>
+            <stop offset="55%" stop-color="rgba(124,58,237,.18)"/>
+            <stop offset="100%" stop-color="rgba(14,26,60,.06)"/>
+          </radialGradient>
+        </defs>
+        <path d="M-50,420 C160,190 420,70 600,70 C780,70 1040,190 1250,420" fill="url(#gEarth5)"/>
+      </svg>
+    </section>
+
+    <!-- SCENE 6: CONTACT (form scene like screenshot) -->
+    <section class="scene" id="contact" data-title="Contact" style="background:
+      radial-gradient(1200px 650px at 55% 25%, rgba(34,211,238,.12), transparent 55%),
+      radial-gradient(900px 560px at 20% 55%, rgba(179,125,255,.20), transparent 60%),
+      linear-gradient(180deg, rgba(4,6,18,.94), rgba(8,9,28,.94));">
+
+      <div class="stars"></div>
+      <div class="stars2"></div>
+
+      <!-- big abstract “whale” vibe without copying (pure shapes) -->
+      <div class="absolute inset-0 -z-10 opacity-60">
+        <svg class="w-full h-full" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M120 320c160-140 420-170 620-90 120 50 200 130 260 210-60-40-130-60-230-40-210 45-370 20-470-60-60-50-110-20-180-20Z" fill="rgba(34,211,238,.10)"/>
+          <path d="M160 340c160-120 390-140 560-70 110 45 190 120 250 190-70-35-140-50-220-30-190 45-340 20-430-45-55-40-95-20-160-45Z" fill="rgba(179,125,255,.12)"/>
+          <path d="M0 560h1200v140H0z" fill="rgba(0,0,0,.20)"/>
+        </svg>
+      </div>
+
+      <div class="w-full max-w-5xl">
+        <div class="text-center">
+          <div class="title-rails justify-center">
+            <span class="rail"></span>
+            <span class="text-sm font-black tracking-[.18em] uppercase neon">Contact Me</span>
+            <span class="rail"></span>
+          </div>
+          <h2 class="mt-6 text-3xl md:text-5xl font-black neon neon-stroke">SEND A MESSAGE</h2>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-12 gap-6">
+          <div class="md:col-span-7">
+            <div class="glass brackets rounded-2xl p-6 md:p-8">
+              <span class="bracket-tr"></span><span class="bracket-bl"></span>
+
+              <!-- NOTE: This is a front-end-only demo. Hook it to Formspree / Netlify later. -->
+              <form id="contactForm" class="space-y-4">
+                <div>
+                  <label class="block text-xs font-extrabold tracking-[.18em] uppercase text-white/65">Email</label>
+                  <input class="field mt-2" type="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div>
+                  <label class="block text-xs font-extrabold tracking-[.18em] uppercase text-white/65">Subject</label>
+                  <input class="field mt-2" type="text" name="subject" placeholder="Internship / Collaboration / Question" required>
+                </div>
+                <div>
+                  <label class="block text-xs font-extrabold tracking-[.18em] uppercase text-white/65">Content</label>
+                  <textarea class="field mt-2" name="message" rows="6" placeholder="Write your message..." required></textarea>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                  <button class="btn btn-primary" type="submit">Send</button>
+                  <a class="btn" href="mailto:selkakva@gmail.com">Email directly</a>
+                  <a class="btn" href="#home">Go back</a>
+                </div>
+                <p id="formNote" class="text-sm text-white/65 hidden">✅ Message prepared. Your email app will open now.</p>
+              </form>
+            </div>
+          </div>
+
+          <aside class="md:col-span-5">
+            <div class="glass rounded-2xl p-6 md:p-8">
+              <p class="text-xs font-extrabold tracking-[.18em] uppercase text-white/60">Direct</p>
+              <p class="mt-2 text-lg font-extrabold neon">selkakva@gmail.com</p>
+              <p class="mt-3 text-sm text-white/70">Best for internships, research, and backend engineering work.</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">UTC+4</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">Baku</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold" style="background: rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.18)">Fast reply</span>
+              </div>
+              <div class="mt-6" style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);"></div>
+              <p class="mt-6 text-sm text-white/70">Links</p>
+              <div class="mt-3 flex flex-wrap gap-3">
+                <a class="btn" href="https://github.com/SelKarimli" target="_blank" rel="noreferrer">GitHub</a>
+                <a class="btn" href="https://www.linkedin.com/in/seljankarimli" target="_blank" rel="noreferrer">LinkedIn</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <p class="mt-10 text-center text-xs text-white/45">© 2026 Seljan Karimli · Fullscreen galaxy design · Single HTML file</p>
       </div>
     </section>
-  </main>
+
+  </div>
+
+  <script>
+    const snap = document.getElementById('snap');
+    const sections = Array.from(document.querySelectorAll('.scene'));
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function currentIndex(){
+      const top = snap.scrollTop;
+      let best = 0;
+      let bestDist = Infinity;
+      sections.forEach((s,i)=>{
+        const d = Math.abs(s.offsetTop - top);
+        if(d < bestDist){ bestDist = d; best = i; }
+      });
+      return best;
+    }
+
+    function goTo(i){
+      i = Math.max(0, Math.min(sections.length-1, i));
+      snap.scrollTo({ top: sections[i].offsetTop, behavior: 'smooth' });
+    }
+
+    prevBtn.addEventListener('click', ()=> goTo(currentIndex()-1));
+    nextBtn.addEventListener('click', ()=> goTo(currentIndex()+1));
+
+    // “Press Enter to go back” like the template bottom-left
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter'){ goTo(currentIndex()-1); }
+      if(e.key === 'ArrowLeft'){ goTo(currentIndex()-1); }
+      if(e.key === 'ArrowRight'){ goTo(currentIndex()+1); }
+    });
+
+    // Contact form: open mailto with composed subject/body (front-end only)
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+    form?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const email = String(data.get('email') || '');
+      const subject = encodeURIComponent(String(data.get('subject') || ''));
+      const msg = encodeURIComponent(String(data.get('message') || ''));
+      const body = encodeURIComponent(`From: ${email}\n\n${decodeURIComponent(msg)}`);
+      // compose an email to Seljan
+      window.location.href = `mailto:selkakva@gmail.com?subject=${subject}&body=${body}`;
+      note?.classList.remove('hidden');
+    });
+
+    // Disable left arrow on first, right arrow on last
+    function updateArrowState(){
+      const i = currentIndex();
+      prevBtn.style.opacity = i === 0 ? '0.35' : '1';
+      prevBtn.style.pointerEvents = i === 0 ? 'none' : 'auto';
+      nextBtn.style.opacity = i === sections.length-1 ? '0.35' : '1';
+      nextBtn.style.pointerEvents = i === sections.length-1 ? 'none' : 'auto';
+    }
+    snap.addEventListener('scroll', ()=>{ window.requestAnimationFrame(updateArrowState); });
+    updateArrowState();
+  </script>
 </body>
 </html>
